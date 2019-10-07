@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Contact {
+public class Doctor {
 
     @Id
-    @GeneratedValue
-    @Column(name = "contact_Id")
-    private Long contactId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "doctor_Id")
+    private Long doctorId;
     @Column(name = "first_Name")
     private String firstName;
     @Column(name = "last_Name")
@@ -20,22 +20,22 @@ public class Contact {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name = "availability_Id")
-    private Availability availability;
+    @JoinColumn(name="department_id", nullable=false)
+    private Department department;
 
-    @ManyToOne
-    @JoinColumn(name = "appointment_Id ")
+    @OneToOne(mappedBy = "doctor")
     private Appointment appointment;
 
-    @OneToMany(targetEntity = Department.class, mappedBy = "contact", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Department> departments;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "availability_id")
+    private Availability availability;
 
-    public Long getConId() {
-        return contactId;
+    public Long getDoctorId() {
+        return doctorId;
     }
 
-    public void setConId(Long conId) {
-        this.contactId = conId;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
     public String getFirstName() {
@@ -70,12 +70,12 @@ public class Contact {
         this.email = email;
     }
 
-    public Availability getAvailability() {
-        return availability;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setAvailability(Availability availability) {
-        this.availability = availability;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public Appointment getAppointment() {
@@ -86,11 +86,11 @@ public class Contact {
         this.appointment = appointment;
     }
 
-    public Set<Department> getDepartments() {
-        return departments;
+    public Availability getAvailability() {
+        return availability;
     }
 
-    public void setDepartments(Set<Department> departments) {
-        this.departments = departments;
+    public void setAvailability(Availability availability) {
+        this.availability = availability;
     }
 }

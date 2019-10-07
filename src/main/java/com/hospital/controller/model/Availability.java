@@ -8,7 +8,7 @@ import java.util.Set;
 public class Availability {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "availability_Id")
     private Long availabilityId;
 
@@ -18,8 +18,12 @@ public class Availability {
     @Column(name = "time_To")
     private Time timeTo;
 
-    @OneToMany(targetEntity = Contact.class, mappedBy = "availability", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Availability> availabilities;
+
+    @OneToOne(mappedBy = "availability")
+    private Doctor doctor;
+
+    @OneToOne(mappedBy = "availability")
+    private Appointment appointment;
 
     public Long getAvailabilityId() {
         return availabilityId;
@@ -45,11 +49,19 @@ public class Availability {
         this.timeTo = timeTo;
     }
 
-    public Set<Availability> getAvailabilities() {
-        return availabilities;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setAvailabilities(Set<Availability> availabilities) {
-        this.availabilities = availabilities;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Appointment getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
     }
 }

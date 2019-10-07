@@ -1,38 +1,31 @@
 package com.hospital.controller.model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Department {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "department_Id")
-    private Long departmentId;
+    private Long id;
 
     @Column(name = "department_Name")
     private String departmentName;
 
-
-    @ManyToOne
-    @JoinColumn(name = "service_Id")
-    private Service service;
-
-    @ManyToOne
-    @JoinColumn(name = "appointment_Id")
+    @OneToOne(mappedBy = "department")
     private Appointment appointment;
 
-    @ManyToOne
-    @JoinColumn(name = "contact_Id")
-    private Contact contact;
+    @OneToMany(mappedBy="department")
+    private Set<Doctor> doctors;
 
-    public Long getDepartmentId() {
-        return departmentId;
+    public Long getId() {
+        return id;
     }
 
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDepartmentName() {
@@ -43,14 +36,6 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-    public Service getService() {
-        return service;
-    }
-
-    public void setService(Service service) {
-        this.service = service;
-    }
-
     public Appointment getAppointment() {
         return appointment;
     }
@@ -59,11 +44,11 @@ public class Department {
         this.appointment = appointment;
     }
 
-    public Contact getContact() {
-        return contact;
+    public Set<Doctor> getDoctors() {
+        return doctors;
     }
 
-    public void setContact(Contact contact) {
-        this.contact = contact;
+    public void setDoctors(Set<Doctor> doctors) {
+        this.doctors = doctors;
     }
 }

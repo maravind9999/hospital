@@ -1,78 +1,68 @@
 package com.hospital.controller.model;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
-
 
 @Entity
 public class Appointment {
 
     @Id
-    @GeneratedValue
-    @Column(name = "appointment_Id")
-    private Long appointmentId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "date_Time")
-    private Date dateTime;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
 
-    @Column(name = "comments")
-    private String comments;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
+    private Department department;
 
-    @OneToMany(targetEntity = Department.class, mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Department> departments;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "availability_id")
+    private Availability availability;
 
-    @OneToMany(targetEntity = Contact.class, mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Contact> doctors;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
 
-    @OneToMany(targetEntity = Contact.class, mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Contact> patients;
-
-    public Long getAppointmentId() {
-        return appointmentId;
+    public Long getId() {
+        return id;
     }
 
-    public void setAppointmentId(Long appointmentId) {
-        this.appointmentId = appointmentId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Date getDateTime() {
-        return dateTime;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public String getComments() {
-        return comments;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setComments(String comments) {
-        this.comments = comments;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
-    public Set<Department> getDepartments() {
-        return departments;
+    public Availability getAvailability() {
+        return availability;
     }
 
-    public void setDepartments(Set<Department> departments) {
-        this.departments = departments;
+    public void setAvailability(Availability availability) {
+        this.availability = availability;
     }
 
-    public Set<Contact> getDoctors() {
-        return doctors;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setDoctors(Set<Contact> doctors) {
-        this.doctors = doctors;
-    }
-
-    public Set<Contact> getPatients() {
-        return patients;
-    }
-
-    public void setPatients(Set<Contact> patients) {
-        this.patients = patients;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 }
