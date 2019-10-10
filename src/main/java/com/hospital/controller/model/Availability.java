@@ -2,6 +2,9 @@ package com.hospital.controller.model;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.Month;
+import java.time.Year;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -12,11 +15,14 @@ public class Availability {
     @Column(name = "availability_Id")
     private Long availabilityId;
 
-    @Column(name = "time_From")
-    private Time  timeFrom;
+    @Column(name = "date")
+    private Date date;
 
-    @Column(name = "time_To")
-    private Time timeTo;
+    @Column(name = "year")
+    private Year year;
+
+    @Column(name = "month")
+    private Month month;
 
 
     @OneToOne(mappedBy = "availability")
@@ -33,21 +39,7 @@ public class Availability {
         this.availabilityId = availabilityId;
     }
 
-    public Time getTimeFrom() {
-        return timeFrom;
-    }
 
-    public void setTimeFrom(Time timeFrom) {
-        this.timeFrom = timeFrom;
-    }
-
-    public Time getTimeTo() {
-        return timeTo;
-    }
-
-    public void setTimeTo(Time timeTo) {
-        this.timeTo = timeTo;
-    }
 
     public Doctor getDoctor() {
         return doctor;

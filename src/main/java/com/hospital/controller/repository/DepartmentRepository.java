@@ -7,5 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
+
                  Department findDepartmentById(Long id);
+              //Department findByDepartmentId(Long id);
 }

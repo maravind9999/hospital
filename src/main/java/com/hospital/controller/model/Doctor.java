@@ -19,9 +19,12 @@ public class Doctor {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne
+   @ManyToOne
     @JoinColumn(name="department_id", nullable=false)
     private Department department;
+
+   /* @OneToOne(mappedBy = "doctor")
+    private Department department;*/
 
     @OneToOne(mappedBy = "doctor")
     private Appointment appointment;
@@ -29,6 +32,7 @@ public class Doctor {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "availability_id")
     private Availability availability;
+
 
     public Long getDoctorId() {
         return doctorId;

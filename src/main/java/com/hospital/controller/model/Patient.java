@@ -10,6 +10,9 @@ public class Patient {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "age")
+    private int age;
+
     @Column(name = "patient_Name")
     private String patientName;
 
@@ -40,5 +43,13 @@ public class Patient {
 
     public void setPatientName(String patientName) {
         this.patientName = patientName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

@@ -17,7 +17,11 @@ public class Department {
     @OneToOne(mappedBy = "department")
     private Appointment appointment;
 
-    @OneToMany(mappedBy="department")
+    /*@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;*/
+
+   @OneToMany(mappedBy="department")
     private Set<Doctor> doctors;
 
     public Long getId() {
@@ -44,7 +48,7 @@ public class Department {
         this.appointment = appointment;
     }
 
-    public Set<Doctor> getDoctors() {
+   public Set<Doctor> getDoctors() {
         return doctors;
     }
 
