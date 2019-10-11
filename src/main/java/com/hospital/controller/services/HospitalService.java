@@ -3,7 +3,6 @@ package com.hospital.controller.services;
 import com.hospital.controller.dto.AvailableDTO;
 import com.hospital.controller.dto.DepartmentDTO;
 import com.hospital.controller.dto.DoctoreDTO;
-import com.hospital.controller.model.Appointment;
 import com.hospital.controller.model.Availability;
 import com.hospital.controller.model.Department;
 import com.hospital.controller.model.Doctor;
@@ -13,11 +12,9 @@ import com.hospital.controller.repository.DepartmentRepository;
 import com.hospital.controller.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @RestController
 @RequestMapping(value = "/hospital")
@@ -63,6 +60,10 @@ public class HospitalService {
         Availability av = ava.getAvailability();
         AvailableDTO dto = new AvailableDTO();
         dto.id=av.getAvailabilityId();
+        dto.date = av.getDates();
+        dto.month=av.getMonth();
+        dto.Year=av.getYear();
         return dto;
     }
+
 }

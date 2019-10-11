@@ -11,6 +11,9 @@ public class Availability {
     @Column(name = "availability_Id")
     private Long availabilityId;
 
+    @Column(name = "dates")
+    private String dates;
+
 
     @Column(name = "year")
     private Integer year;
@@ -49,5 +52,29 @@ public class Availability {
 
     public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
+    }
+
+    public String getDates() {
+        return dates;
+    }
+
+    public void setDates(String dates) {
+        this.dates = dates;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getMonth() {
+        return month;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = month;
     }
 }
