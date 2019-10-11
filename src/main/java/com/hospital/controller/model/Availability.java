@@ -1,11 +1,7 @@
 package com.hospital.controller.model;
 
 import javax.persistence.*;
-import java.sql.Time;
-import java.time.Month;
-import java.time.Year;
-import java.util.Date;
-import java.util.Set;
+
 
 @Entity
 public class Availability {
@@ -15,14 +11,12 @@ public class Availability {
     @Column(name = "availability_Id")
     private Long availabilityId;
 
-    @Column(name = "date")
-    private Date date;
 
     @Column(name = "year")
-    private Year year;
+    private Integer year;
 
     @Column(name = "month")
-    private Month month;
+    private Integer month;
 
 
     @OneToOne(mappedBy = "availability")
