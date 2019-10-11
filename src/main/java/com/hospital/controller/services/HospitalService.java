@@ -57,11 +57,12 @@ public class HospitalService {
        return docList;
     }
 
-    @GetMapping(value = "/aviById/{id}")
+    @GetMapping(value = "/aviByDocId/{id}")
     public AvailableDTO getAva(@PathVariable("id") Long id) {
-        Availability ava= doctorRepository.findDoctorByDoctorId(id).getAvailability();
+        Doctor ava= doctorRepository.findDoctorByDoctorId(id);
+        Availability av = ava.getAvailability();
         AvailableDTO dto = new AvailableDTO();
-        dto.id=ava.getAvailabilityId();
+        dto.id=av.getAvailabilityId();
         return dto;
     }
 }
