@@ -3,6 +3,7 @@ package com.hospital.controller.services;
 import com.hospital.controller.dto.AvailableDTO;
 import com.hospital.controller.dto.DepartmentDTO;
 import com.hospital.controller.dto.DoctoreDTO;
+import com.hospital.controller.dtoHelper.DtoHelper;
 import com.hospital.controller.model.Availability;
 import com.hospital.controller.model.Department;
 import com.hospital.controller.model.Doctor;
@@ -19,6 +20,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/hospital")
 public class HospitalService {
+
+    DtoHelper dtoHelper = new DtoHelper();
     @Autowired
     public DepartmentRepository departmentRepository;
     @Autowired
@@ -32,7 +35,7 @@ public class HospitalService {
 
 
     @GetMapping(value = "/getDepartments")
-    public List<DepartmentDTO>  getAll(){
+    public List<DepartmentDTO>  getDepartments(){
         List<DepartmentDTO> depList = new ArrayList<>();
         departmentRepository.findAll().forEach(elt->{
             DepartmentDTO dto = new DepartmentDTO();
@@ -41,11 +44,10 @@ public class HospitalService {
             depList.add(dto);
         });return depList;
     }
-    @GetMapping(value = "/{id}")
-    public List<DoctoreDTO> getDep(@PathVariable("id") Long id){
+    @GetMapping(value = "/getDoctorsByDepId/{id}")
+    public List<DoctoreDTO> getDoctorsByDepId(@PathVariable("id") Long id){
         List<DoctoreDTO> docList = new ArrayList<>();
-       Department dep = departmentRepository.findDepartmentById(id);
-          dep.getDoctors().forEach(elt->{
+       doctorRepository.findDoctorsByDepartmentId(id).forEach(elt->{
            DoctoreDTO dto=new DoctoreDTO();
            dto.id=elt.getDoctorId();
            dto.name=elt.getFirstName();
@@ -54,15 +56,14 @@ public class HospitalService {
        return docList;
     }
 
-    @GetMapping(value = "/aviByDocId/{id}")
-    public AvailableDTO getAva(@PathVariable("id") Long id) {
-        Doctor ava= doctorRepository.findDoctorByDoctorId(id);
-        Availability av = ava.getAvailability();
+    @GetMapping(value = "/getAvailableTimeByDocIdAndMonthAndYear/{id}/{month}/{year}")
+    public AvailableDTO getAvailableTimeByDocIdAndMonthAndYear(@PathVariable Long id, @PathVariable Integer month, @PathVariable Integer year) {
+        Availability ava = availabilityRepository.findAvailabilityByDoctorDoctorIdAndMonthAndYear(id,month,year);
         AvailableDTO dto = new AvailableDTO();
-        dto.id=av.getAvailabilityId();
-        dto.date = av.getDates();
-        dto.month=av.getMonth();
-        dto.Year=av.getYear();
+        dto.id=ava.getAvailabilityId();
+        dto.date=ava.getDates();
+        dto.month=ava.getMonth();
+        dto.Year=ava.getYear();
         return dto;
     }
 

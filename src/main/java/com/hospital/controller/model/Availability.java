@@ -22,7 +22,8 @@ public class Availability {
     private Integer month;
 
 
-    @OneToOne(mappedBy = "availability")
+    @ManyToOne
+    @JoinColumn( name = "doctor_Id")
     private Doctor doctor;
 
     @OneToOne(mappedBy = "availability")

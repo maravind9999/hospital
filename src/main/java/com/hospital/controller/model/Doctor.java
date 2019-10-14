@@ -29,9 +29,8 @@ public class Doctor {
     @OneToOne(mappedBy = "doctor")
     private Appointment appointment;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "availability_id")
-    private Availability availability;
+    @OneToMany(mappedBy="doctor")
+    private Set<Availability> availabilities;
 
 
     public Long getDoctorId() {
@@ -90,11 +89,11 @@ public class Doctor {
         this.appointment = appointment;
     }
 
-    public Availability getAvailability() {
-        return availability;
+    public Set<Availability> getAvailabilities() {
+        return availabilities;
     }
 
-    public void setAvailability(Availability availability) {
-        this.availability = availability;
+    public void setAvailabilities(Set<Availability> availabilities) {
+        this.availabilities = availabilities;
     }
 }
