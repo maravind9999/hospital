@@ -26,8 +26,6 @@ public class Availability {
     @JoinColumn( name = "doctor_Id")
     private Doctor doctor;
 
-    @OneToOne(mappedBy = "availability")
-    private Appointment appointment;
 
     public Long getAvailabilityId() {
         return availabilityId;
@@ -45,14 +43,6 @@ public class Availability {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
-    }
-
-    public Appointment getAppointment() {
-        return appointment;
-    }
-
-    public void setAppointment(Appointment appointment) {
-        this.appointment = appointment;
     }
 
     public String getDates() {

@@ -1,5 +1,7 @@
 package com.hospital.controller.dto;
 
+import com.hospital.controller.model.Doctor;
+
 public class DoctoreDTO {
 
     public Long id;
@@ -19,5 +21,10 @@ public class DoctoreDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void sync(Doctor elt){
+        id=elt.getId();
+        name=elt.getFirstName();
     }
 }

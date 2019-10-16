@@ -9,10 +9,10 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "department_Id")
-    private Long id;
+    public Long id;
 
     @Column(name = "department_Name")
-    private String departmentName;
+    public String departmentName;
 
     @OneToOne(mappedBy = "department")
     private Appointment appointment;

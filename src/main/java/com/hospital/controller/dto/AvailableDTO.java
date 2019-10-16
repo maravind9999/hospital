@@ -1,5 +1,7 @@
 package com.hospital.controller.dto;
 
+import com.hospital.controller.model.Availability;
+
 public class AvailableDTO {
 
  public Long id;
@@ -37,5 +39,11 @@ public class AvailableDTO {
 
     public void setYear(Integer year) {
         Year = year;
+    }
+    public void sync (Availability ava){
+        id=ava.getAvailabilityId();
+        date=ava.getDates();
+        month=ava.getMonth();
+        Year=ava.getYear();
     }
 }

@@ -1,33 +1,17 @@
 package com.hospital.controller.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-public class Patient {
+public class Patient extends Contact {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "age")
-    private int age;
-
-    @Column(name = "patient_Name")
-    private String patientName;
+    @Column(name = "dateOfBirth")
+    private Date dob;
 
     @OneToOne(mappedBy = "patient")
     private Appointment appointment;
 
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Appointment getAppointment() {
         return appointment;
@@ -37,19 +21,11 @@ public class Patient {
         this.appointment = appointment;
     }
 
-    public String getPatientName() {
-        return patientName;
+    public Date getDob() {
+        return dob;
     }
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setDob(Date dob) {
+        this.dob = dob;
     }
 }
