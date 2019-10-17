@@ -4,12 +4,10 @@ import com.hospital.controller.dto.AppointmentDTO;
 import com.hospital.controller.dto.AvailableDTO;
 import com.hospital.controller.dto.DepartmentDTO;
 import com.hospital.controller.dto.DoctoreDTO;
-import com.hospital.controller.dtoHelper.DtoHelper;
 import com.hospital.controller.handler.Handler;
 import com.hospital.controller.model.Appointment;
 import com.hospital.controller.model.Availability;
 import com.hospital.controller.model.Doctor;
-import com.hospital.controller.model.Patient;
 import com.hospital.controller.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +29,6 @@ public class HospitalService {
     public AvailabilityRepository availabilityRepository;
     @Autowired
     public Handler handler;
-    @Autowired
-    public PatientRepository patientRepository;
 
 
     @GetMapping(value = "/getDepartments")

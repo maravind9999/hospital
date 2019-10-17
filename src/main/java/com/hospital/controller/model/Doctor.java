@@ -11,9 +11,6 @@ public class Doctor extends Contact {
     @JoinColumn(name="department_id")
     private Department department;
 
-  /*  @OneToOne(mappedBy = "doctor")
-    private Appointment appointment;*/
-
     @OneToMany(mappedBy="doctor")
     private Set<Availability> availabilities;
 
@@ -26,13 +23,6 @@ public class Doctor extends Contact {
         this.department = department;
     }
 
-   /* public Appointment getAppointment() {
-        return appointment;
-    }
-
-    public void setAppointment(Appointment appointment) {
-        this.appointment = appointment;
-    }*/
 
     public Set<Availability> getAvailabilities() {
         return availabilities;
