@@ -46,7 +46,7 @@ public class HospitalService {
     @GetMapping(value = "/getDoctorsByDepId/{id}")
     public List<DoctoreDTO> getDoctorsByDepId(@PathVariable("id") Long id){
         List<DoctoreDTO> docList = new ArrayList<>();
-       doctorRepository.findDoctorsByDepartmentId(id).forEach(elt->{
+        doctorRepository.findDoctorsByDepartmentId(id).forEach(elt->{
            DoctoreDTO dto=new DoctoreDTO();
            dto.sync(elt);
            docList.add(dto);
