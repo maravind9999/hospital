@@ -11,20 +11,18 @@ public class Appointment {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "department_id")
-    private Department department;
+    @Column(name = "dep_Id")
+    public Integer depId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
+    @Column(name = "docId")
+    public Integer docId;
 
     @Column(name = "date")
-    private Date date;
+    public Date date;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+   @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "patient")
+    public Patient patient;
 
     public Long getId() {
         return id;
@@ -32,22 +30,6 @@ public class Appointment {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
     }
 
     public Date getDate() {
@@ -64,5 +46,21 @@ public class Appointment {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    public Integer getDepId() {
+        return depId;
+    }
+
+    public void setDepId(Integer depId) {
+        this.depId = depId;
+    }
+
+    public Integer getDocId() {
+        return docId;
+    }
+
+    public void setDocId(Integer docId) {
+        this.docId = docId;
     }
 }

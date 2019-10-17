@@ -1,13 +1,12 @@
 package com.hospital.controller.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 public class Patient extends Contact {
 
-    @Column(name = "dateOfBirth")
-    private Date dob;
+    @Column(name = "age")
+    public Integer age;
 
     @OneToOne(mappedBy = "patient")
     private Appointment appointment;
@@ -21,11 +20,11 @@ public class Patient extends Contact {
         this.appointment = appointment;
     }
 
-    public Date getDob() {
-        return dob;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

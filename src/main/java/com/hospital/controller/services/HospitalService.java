@@ -1,16 +1,16 @@
 package com.hospital.controller.services;
 
+import com.hospital.controller.dto.AppointmentDTO;
 import com.hospital.controller.dto.AvailableDTO;
 import com.hospital.controller.dto.DepartmentDTO;
 import com.hospital.controller.dto.DoctoreDTO;
 import com.hospital.controller.dtoHelper.DtoHelper;
+import com.hospital.controller.handler.Handler;
 import com.hospital.controller.model.Appointment;
 import com.hospital.controller.model.Availability;
 import com.hospital.controller.model.Doctor;
-import com.hospital.controller.repository.AppointmentRepository;
-import com.hospital.controller.repository.AvailabilityRepository;
-import com.hospital.controller.repository.ContactRepository;
-import com.hospital.controller.repository.DepartmentRepository;
+import com.hospital.controller.model.Patient;
+import com.hospital.controller.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
@@ -21,17 +21,18 @@ import java.util.List;
 @RequestMapping(value = "/hospital")
 public class HospitalService {
 
-    DtoHelper dtoHelper = new DtoHelper();
     @Autowired
     public DepartmentRepository departmentRepository;
     @Autowired
     public ContactRepository<Doctor> doctorRepository;
-
     @Autowired
     public AppointmentRepository appointmentRepository;
-
     @Autowired
     public AvailabilityRepository availabilityRepository;
+    @Autowired
+    public Handler handler;
+    @Autowired
+    public PatientRepository patientRepository;
 
 
     @GetMapping(value = "/getDepartments")
@@ -63,9 +64,8 @@ public class HospitalService {
     }
 
     @PostMapping(value = "/creatData")
-    public List<Appointment> load(@RequestBody Appointment appointment){
-        appointmentRepository.save(appointment);
-        return appointmentRepository.findAll();
+    public Appointment load(@RequestBody AppointmentDTO appointmentDTO){
+        return appointmentRepository.findAppointmentById(handler.getApp(appointmentDTO).getId());
     }
 
 }

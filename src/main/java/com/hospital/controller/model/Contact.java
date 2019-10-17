@@ -11,13 +11,13 @@ public abstract class Contact {
     @GeneratedValue
     public Long id;
     @Column(name = "first_Name")
-    private String firstName;
+    public String firstName;
     @Column(name = "last_Name")
-    private String lastName;
+    public String lastName;
     @Column(name = "contact_Number")
-    private Integer contactNumber;
+    public Integer contactNumber;
     @Column(name = "Description")
-    private String description;
+    public String description;
 
     public Long getId() {
         return id;

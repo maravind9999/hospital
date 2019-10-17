@@ -14,12 +14,8 @@ public class Department {
     @Column(name = "department_Name")
     public String departmentName;
 
-    @OneToOne(mappedBy = "department")
-    private Appointment appointment;
-
-    /*@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;*/
+    /*@OneToOne(mappedBy = "department")
+    private Appointment appointment;*/
 
    @OneToMany(mappedBy="department")
     private Set<Doctor> doctors;
@@ -40,13 +36,13 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-    public Appointment getAppointment() {
+  /*  public Appointment getAppointment() {
         return appointment;
     }
 
     public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
-    }
+    }*/
 
    public Set<Doctor> getDoctors() {
         return doctors;
