@@ -1,0 +1,20 @@
+<div class="container">
+    <div ng-controller="myController"  >
+        <div class="sub-cont" >
+            <div class="caldendar">
+        <md-calendar class="fixed-calendar"  ng-click="selectDate(myDate| date: 'dd-MM-yyyy'); ShowHide()" md-date-filter = "availabie" ng-model="myDate">
+        </md-calendar>
+            </div>
+       </div>
+        <div class="column"  >
+            <div class="content">
+                <p><b>Summary</b></p>	
+                <p>{{depart}}</p>
+                <p>{{doctor}}</p>
+                <p>{{appointDate}}</p>
+            </div>
+        </div><br><br>
+        <a  href="#!/doctor" >Back</a>&nbsp;&nbsp;&nbsp;
+         <a ng-show = "IsVisible"  href="#!/appointment" >Next</a>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+    <div ng-controller="myController"  >
+        <div class="sub-cont" ><p><b>Select Doctor</b></p>
+            <div ng-repeat="doc in docList">
+                <button ng-click="selectDoctor(doc); ShowHide()" >{{doc.name}}</button> 
+            </div>
+        </div>
+        <div class="column"  >
+            <div class="content">
+                <p><b>Summary</b></p>	
+                <p>{{depart}}</p>
+                <p>{{doctor}}</p>
+                <p>{{appointDate}}</p>
+            </div>
+        </div><br><br>
+        <a href="#/!" >Back</a>&nbsp;&nbsp;&nbsp;
+       <a ng-show = "IsVisible" href="#!/availability">Next</a>
+    </div>
+</div>
+

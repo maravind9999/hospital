@@ -1,0 +1,18 @@
+<div class="container">
+    <div ng-controller="myController"  >
+        <div class="sub-cont" ><p><b>Select Department</b></p>
+            <div ng-repeat="dep in depList">
+                <button ng-click="selectDepart(dep); ShowHide()" style="" >{{dep.name}}</button> 
+            </div>
+        </div>
+        <div class="column"  >
+            <div class="content">
+                <p><b>Summary</b></p>	
+                <p>{{depart}}</p>
+                <p>{{doctor}}</p>
+                <p>{{appointDate}}</p>
+            </div>
+        </div><br><br>
+       <a ng-show = "IsVisible"  href="#!/doctor" >Next</a>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+    <div ng-controller="myController"  >
+        <div class="sub-cont" ><p><b>Enter Patient Details</b></p>
+            <form ng-submit="appointmentForm()" >
+            <label for="firstName" >First Name: </label>
+            <input type="text" id="firstName" ng-model="firstName" /> <br /><br />
+			  <label for="lastName">Last Name :</label>
+                <input type="text" id="lastName" ng-model="lastName" /> <br /><br />
+            <label for="dob" >DoB :</label>
+                <input type="date" id="dob" ng-model="dob" /> <br /><br /><br />
+				<input type="submit" value="Submit" />
+        <input type="reset" ng-click="resetForm()" value="Reset" />
+    </form>
+
+        </div>
+        <div class="column"  >
+            <div class="content">
+                <p><b>Summary</b></p>	
+                <p>{{depart}}</p>
+                <p>{{doctor}}</p>
+                <p>{{appointDate}}</p>
+            </div>
+        </div><br><br>
+        <a href="#/!" >Back</a>&nbsp;&nbsp;&nbsp;
+       <a ng-show = "IsVisible" href="#!/availability">Next</a>
+    </div>
+</div>
+
