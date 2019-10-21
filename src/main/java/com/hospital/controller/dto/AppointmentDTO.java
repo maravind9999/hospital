@@ -2,6 +2,7 @@ package com.hospital.controller.dto;
 
 import com.hospital.controller.model.Appointment;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 public class AppointmentDTO {
@@ -12,7 +13,7 @@ public class AppointmentDTO {
     public String firstName;
     public String LastName;
     public Integer age;
-    public Integer contactNumber;
+    public Long contactNumber;
     public String desc;
 
     public Integer getDepId() {
@@ -63,11 +64,11 @@ public class AppointmentDTO {
         this.age = age;
     }
 
-    public Integer getContactNumber() {
+    public Long getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(Integer contactNumber) {
+    public void setContactNumber(Long contactNumber) {
         this.contactNumber = contactNumber;
     }
 

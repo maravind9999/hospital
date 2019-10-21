@@ -1,7 +1,6 @@
 package com.hospital.controller.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Inheritance
@@ -15,7 +14,7 @@ public abstract class Contact {
     @Column(name = "last_Name")
     public String lastName;
     @Column(name = "contact_Number")
-    public Integer contactNumber;
+    public Long contactNumber;
     @Column(name = "Description")
     public String description;
 
@@ -43,11 +42,11 @@ public abstract class Contact {
         this.lastName = lastName;
     }
 
-    public Integer getContactNumber() {
+    public Long getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(Integer contactNumber) {
+    public void setContactNumber(Long contactNumber) {
         this.contactNumber = contactNumber;
     }
 
